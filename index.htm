@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bildbearbeitung</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                min-height: 100vh;
+                background-color: #f4f4f4;
+            }
+
+            .container {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .controls {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            canvas {
+                border: 1px solid #ccc;
+                max-width: 100%;
+            }
+
+            button {
+                cursor: pointer;
+                padding: 10px 15px;
+                border: none;
+                background-color: #007bff;
+                color: #fff;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            input {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 200px;
+                font-size: 14px;
+            }
+
+            #thumbnailBar {
+                display: flex;
+                overflow-x: auto;
+                border-bottom: 1px solid #ccc;
+                padding: 5px;
+                gap: 5px;
+                background-color: #f9f9f9;
+            }
+
+            #thumbnailBar img {
+                max-width: 80px;
+                max-height: 60px;
+                object-fit: contain;
+                border: 1px solid gray;
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+
+            #thumbnailBar img:hover {
+                transform: scale(1.1);
+            }
+
+            #thumbnailBar img.selected {
+                border: 2px solid blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="controls">
+                <button id="customUploadButton">Bild hochladen</button>
+                <input type="file" id="uploadImage" accept="image/*" style="display: none;" multiple>
+                <input type="text" id="textInput" placeholder="Hier deinen Text eingeben">
+                <button id="deleteImage">Bild löschen</button>
+                <button id="downloadImage">Bild herunterladen</button>
+                <button id="downloadSet">Set herunterladen</button>
+            </div>
+            <div>
+                <!-- Thumbnail-Bar jetzt direkt vor dem Canvas -->
+                <div id="thumbnailBar"
+                    style="display: flex; overflow-x: auto; border-bottom: 1px solid #ccc; padding: 5px; gap: 5px;"></div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+
+</html>
